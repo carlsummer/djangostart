@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<form action="/form/" method="post" class="smart-green">
+    <h1>留言信息
+        <span>请留下你的信息.</span>
+    </h1>
+    <label for="">
+        <span>姓名：</span>
+        <input type="text" name="name" value="{% if not my_message.name == 'bobbytest' %}bobbyhastest{% else %}bobby not test {% endif %}" id="name" class="error" placeholder="请输入姓名">
+        <div class="error-msg"></div>
+    </label>
+    <label for="">
+        <span>邮箱：</span>
+        <input type="email" name="email" id="email" value="{{ my_message.email }}" placeholder="请输入邮箱地址">
+        <div class="error-msg"></div>
+    </label>
+    <label for="">
+        <span>联系地址：</span>
+        <input type="text" name="address" id="address" value="{{ my_message.address }}" placeholder="请输入联系地址">
+        <div class="error-msg"></div>
+    </label>
+    <label for="">
+        <span>留言：</span>
+        <textarea name="message" id="message" cols="30" rows="10" placeholder="请输入留言">{{ my_message.message }}</textarea>
+        <div class="error-msg"></div>
+    </label>
+    <label for="">
+        <span>&nbsp;</span>
+        <input type="submit" class="button" value="提交">
+    </label>
+    {% csrf_token %}
+</form>
+</body>
+</html>
